@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers; //showRegistrationForm&registerを取り込んている
-
+use Illuminate\Foundation\Auth\RegistersUsers; //ルートのshowRegistrationForm&registerを取り込んている
+// RegistersUsers;はファイル名検索して
 class RegisterController extends Controller
 {
     /*
@@ -34,9 +34,12 @@ class RegisterController extends Controller
      *
      * @return void
      */
+    //  __construct()でmiddlewareの設定が可能
     public function __construct()
     {
+        // middlewareとは、Controller にアクセスする前に確認される条件
         $this->middleware('guest');
+        // guestクラスはどこに定義されているのか？→app/Http/Kernel.phpでたくさん定義
     }
 
     /**
@@ -45,6 +48,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    // validatorはフォームのバリデーション
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -60,6 +64,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+    //  アクション7つのcreateではなく、User を 新規作成しているメソッド
     protected function create(array $data)
     {
         return User::create([

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <!--Auth::check()はログイン認証　Auth::user()はログイン中のユーザ-->
     @if (Auth::check())
         <div class="row">
             <aside class="col-sm-4">

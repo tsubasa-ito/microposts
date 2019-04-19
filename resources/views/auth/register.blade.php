@@ -7,7 +7,7 @@
 
     <div class="row">
         <div class="col-sm-6 offset-sm-3">
-
+            <!--ルートsignup.postに繋げる-->
             {!! Form::open(['route' => 'signup.post']) !!}
                 <div class="form-group">
                     {!! Form::label('name', 'Name') !!}
