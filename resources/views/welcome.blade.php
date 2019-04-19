@@ -1,18 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <!--Auth::check()はログイン認証　Auth::user()はログイン中のユーザ-->
     @if (Auth::check())
         <div class="row">
             <aside class="col-sm-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">{{ Auth::user()->name }}</h3>
-                    </div>
-                    <div class="card-body">
-                        <img class="rounded img-fluid" src="{{ Gravatar::src(Auth::user()->email, 500) }}" alt="">
-                    </div>
-                </div>
+                @include('users.card', ['user' => Auth::user()])
             </aside>
             <div class="col-sm-8">
                 @if (Auth::id() == $user->id)

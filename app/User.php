@@ -1,5 +1,5 @@
 <?php
-
+//役割：model→データベースから、データを取ってくる
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
@@ -80,5 +80,15 @@ class User extends Authenticatable
     public function is_following($userId)
     {//$userIdに、followings()の中の、$userIdの中の、follow_idを探し、置く
         return $this->followings()->where('follow_id', $userId)->exists();
+    }
+    
+    public function feed_microposts()
+    {   
+        // フォローしているUserのidの配列を取得　pluck()引数のテーブルのカラム名だけを抜き出す　toArray()通常の配列に変換
+        $follow_user_ids = $this->followings()->pluck('users.id')->toArray();
+        //　その中に自分のidも追加
+        $follow_user_ids[] = $this->id;
+        //microposts テーブルの user_idカラムで $follow_user_ids の中の 自分のidを含むもの全てを取得して return（全てのユーザツイートを表示するため）
+        return Micropost::whereIn('user_id', $follow_user_ids);
     }
 }
