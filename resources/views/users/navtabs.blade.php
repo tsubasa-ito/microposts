@@ -9,4 +9,7 @@
     <li class="nav-item">
         <a href="{{ route('users.followers', ['id' => $user->id]) }}" class="nav-link {{ Request::is('users/*/followers') ? 'active' : '' }}">Followers <span class="badge badge-secondary">{{ $count_followers }}</span></a>
     </li>
+    <li class="nav-item">
+        <a href="{{ route('users.favorites', ['id' => $user->id]) }}" class="nav-link {{ Request::is('users/' . $user->id) ? 'active' : '' }}">Favorite <span class="badge badge-secondary">{{ $count_favorites }}</span></a>
+    </li>
 </ul>
