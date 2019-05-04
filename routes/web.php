@@ -50,3 +50,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy']]);
 });
 // 'users'というURLを'UsersController'で'index', 'show'だけを見せる
+
+// Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
