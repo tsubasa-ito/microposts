@@ -25,6 +25,8 @@
             <div class="text-center">
                 <h1>Welcome to the Microposts</h1>
                 {!! link_to_route('signup.get', 'Sign up now!', [], ['class' => 'btn btn-lg btn-primary']) !!}
+                <h2>or</h2>
+                {!! link_to_route('login', 'Login', [], ['class' => 'btn btn-lg btn-info']) !!}
             </div>
         </div>
     @endif
